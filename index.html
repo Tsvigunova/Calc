@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="view" content="width=device-width">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Calculator</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<header class="header">
+			<div class="header_title">
+				Calculator
+			</div>
+		</header>
+		<section class="operation">
+			<div class="enter">
+				<form class="enter_form" method="POST" id="enter_form">
+					<div class="enter_num">
+						<label for="num-1">Number #1</label>
+						<input required class="num_input" type="number" name="num-1" id="num-1">
+					</div>
+					<div class="enter_select">
+						<label for="operation">Operation</label>
+						<select name="select" id="select">
+							<option value="plus">+</option>
+							<option value="minus">-</option>
+							<option value="multiply">*</option>
+							<option value="divide">/</option>
+							<option value="sqrt">√</option>
+						</select>
+					</div>
+					<div class="enter_num">
+						<label for="num-2">Number #2</label>
+						<input required class="num_input" type="number" name="num-2" id="num-2">
+					</div>
+				</form>
+				<button class="enter_button" type="submit" id="equals">Equals</button>
+			</div>
+			<div class="oparation_result">
+				Last result: <span id="result" class="result"></span>
+			</div>
+		</section>
+
+		<section class="history">
+
+		</section>
+
+		<footer class="footer">
+			<div class="footer_inner">
+				<div class="footer_text">
+					Anastasiia Tsvihunova 2022
+				</div>
+			
+				<ul class="footer__social">
+					<li><a class="link footer__social-insta" href="#">Instagram</a></li>
+					<li><a class="link footer__social-linkidin" href="#">Linkidin</a></li>
+					<li><a class="link footer__social-email" href="#">Email</a></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+
+	<script src="js/main.js"></script>
+
+</body>
+</html>
