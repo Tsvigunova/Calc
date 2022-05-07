@@ -60,6 +60,17 @@ body{
 }
 
 
+.history {
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 70%;
+}
+
+.history__interactive-list th,
+.history__interactive-list td {
+	border: 1px solid #D3D3D3;
+}
+
 
 
 

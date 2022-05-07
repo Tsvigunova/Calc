@@ -41,7 +41,7 @@ const calculate = (num, secondNum, operation) => {
 			result = a / b;
 			break;
 		case 'sqrt':
-			result = Math.pow(a, b);
+			result = Math.SQRT${b}(a);
 			break;
 	}
 
