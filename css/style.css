@@ -62,20 +62,20 @@ body{
 
 .history {
 	margin: 0 auto;
-	margin-top: 100px;
+	margin-top: 5em;
 	width: 70%;
 }
 
-.history__interactive-list th,
-.history__interactive-list td {
-	border: 1px solid #D3D3D3;
+.history__calc th,
+.history__calc td{
+	padding-right: 4.5em;
 }
 
 
 
 
 .footer_inner{
-	padding: 80px 0;
+	padding-top: 15em;
 }
 
 .footer__social{
