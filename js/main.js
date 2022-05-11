@@ -3,7 +3,6 @@ const firstNumInput = document.getElementById('num-1');
 const secondNumInput = document.getElementById('num-2');
 const historyTable = document.querySelector('.history__calc');
 const historyOperations = [];
-let i = 0;
 
 equals.addEventListener('click', () => {
 	const a = firstNumInput.value;
@@ -11,21 +10,25 @@ equals.addEventListener('click', () => {
 	const selectOperation = document.getElementById('select').value;
 	const lastResult = document.querySelector('.oparation_result span');
 	const result = calculate(a, b, selectOperation);
+	const now = new Date().toLocaleTimeString(); 
 
 	if(a && b) {
 		lastResult.textContent = result;
+
+		createHistoryList({
+			a,
+			b,
+			operation: selectOperation,
+			result,
+			now
+		});
+
 	} else {
 		lastResult.textContent = 'error';
 	}
 
 	clearInputs();
 
-	createHistoryList({
-		a,
-		b,
-		operation: selectOperation,
-		result
-	});
 });
 
 
@@ -72,18 +75,27 @@ function createHistoryList(operation) {
 			<th>Operation</th>
 			<th>Number 2</th>
 			<th>Equals</th>
+			<th>Date</th>
 		</tr>
 	`;
 
 	historyOperations.forEach((historyOperation, i) => {
-		historyTable.innerHTML += `
-			<tr class="history__interactive-list">
-				<td>${i + 1}</td>
-				<td>${historyOperation.a}</td>
-				<td>${historyOperation.operation}</td>
-				<td>${historyOperation.b}</td>
-				<td>${historyOperation.result}</td>
-			</tr>
+		if (i < 5) {
+			historyTable.innerHTML += `
+				<tr class="history__interactive-list">
+					<td>${i + 1}</td>
+					<td>${historyOperation.a}</td>
+					<td>${historyOperation.operation}</td>
+					<td>${historyOperation.b}</td>
+					<td>${historyOperation.result}</td>
+					<td>${historyOperation.now}</td>
+				</tr>
 			`;
+		} else {
+			historyOperations.splice(5, 1);
+		}
 	});
 }
+
+
+
