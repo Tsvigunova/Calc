@@ -2,7 +2,19 @@ const equals = document.getElementById('equals');
 const firstNumInput = document.getElementById('num-1');
 const secondNumInput = document.getElementById('num-2');
 const historyTable = document.querySelector('.history__calc');
-const historyOperations = [];
+let historyOperations = JSON.parse(localStorage.getItem('history')) ?? [];
+const historyDelete = document.querySelector('.history_delete');
+
+createHistoryList();
+
+historyDelete.addEventListener('click', (e) => {
+	e.preventDefault();
+
+	historyOperations=[];
+	localStorage.removeItem('history');
+	
+	createHistoryList();
+});
 
 equals.addEventListener('click', () => {
 	const a = firstNumInput.value;
@@ -14,8 +26,8 @@ equals.addEventListener('click', () => {
 
 	if(a && b) {
 		lastResult.textContent = result;
-
-		createHistoryList({
+		
+		historyOperations.unshift({
 			a,
 			b,
 			operation: selectOperation,
@@ -23,6 +35,9 @@ equals.addEventListener('click', () => {
 			now
 		});
 
+		createHistoryList();
+
+		localStorage.setItem('history', JSON.stringify(historyOperations)); 
 	} else {
 		lastResult.textContent = 'error';
 	}
@@ -64,9 +79,7 @@ const calculate = (num, secondNum, operation) => {
 };
 
 
-function createHistoryList(operation) {
-	historyOperations.unshift(operation);
-
+function createHistoryList() {
 	historyTable.innerHTML = "";
 	historyTable.innerHTML += `
 		<tr class="history__calc_title">

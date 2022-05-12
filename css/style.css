@@ -71,6 +71,15 @@ body{
 	padding-right: 2em;
 }
 
+.history_title{
+	display: flex;
+	justify-content: space-between;
+}
+
+.history_delete{
+	height: 2em;
+	margin-right: 2em;
+}
 
 
 
