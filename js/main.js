@@ -70,9 +70,6 @@ const calculate = (num, secondNum, operation) => {
 		case '/':
 			result = a / b;
 			break;
-		case 'sqrt':
-			result = Math.sqrt(a);
-			break;
 	}
 
 	return result;
