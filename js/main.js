@@ -16,6 +16,7 @@ historyDelete.addEventListener('click', (e) => {
 	createHistoryList();
 });
 
+
 equals.addEventListener('click', () => {
 	const a = firstNumInput.value;
 	const b = secondNumInput.value;
@@ -36,8 +37,6 @@ equals.addEventListener('click', () => {
 		});
 
 		createHistoryList();
-
-		localStorage.setItem('history', JSON.stringify(historyOperations)); 
 	} else {
 		lastResult.textContent = 'error';
 	}
@@ -86,11 +85,13 @@ function createHistoryList() {
 			<th>Number 2</th>
 			<th>Equals</th>
 			<th>Date</th>
+			<th>Actions</th>
 		</tr>
 	`;
 
 	historyOperations.forEach((historyOperation, i) => {
 		if (i < 5) {
+			
 			historyTable.innerHTML += `
 				<tr class="history__interactive-list">
 					<td>${i + 1}</td>
@@ -99,13 +100,27 @@ function createHistoryList() {
 					<td>${historyOperation.b}</td>
 					<td>${historyOperation.result}</td>
 					<td>${historyOperation.now}</td>
+					<td class="history_item_delete">Delete</td>
 				</tr>
 			`;
 		} else {
 			historyOperations.splice(5, 1);
 		}
 	});
+
+	historyItemDelete()
+
+	localStorage.setItem('history', JSON.stringify(historyOperations)); 
 }
 
+function historyItemDelete() {
+	document.querySelectorAll('.history_item_delete').forEach((btn, i) => {
+		btn.addEventListener('click', () => {
+			historyOperations.splice(i, 1);
 
+			createHistoryList();
+		});
+	});
+
+}
 
