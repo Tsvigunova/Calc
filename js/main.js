@@ -2,7 +2,8 @@ const equals = document.getElementById('equals');
 const firstNumInput = document.getElementById('num-1');
 const secondNumInput = document.getElementById('num-2');
 const historyTable = document.querySelector('.history__calc');
-let historyOperations = JSON.parse(localStorage.getItem('history')) ?? [];
+const localStorageKey = 'history';
+let historyOperations = JSON.parse(localStorage.getItem(localStorageKey)) ?? [];
 const historyDelete = document.querySelector('.history_delete');
 
 createHistoryList();
@@ -11,7 +12,7 @@ historyDelete.addEventListener('click', (e) => {
 	e.preventDefault();
 
 	historyOperations=[];
-	localStorage.removeItem('history');
+	localStorage.removeItem(localStorageKey);
 	
 	createHistoryList();
 });
@@ -108,9 +109,9 @@ function createHistoryList() {
 		}
 	});
 
-	historyItemDelete()
+	historyItemDelete();
 
-	localStorage.setItem('history', JSON.stringify(historyOperations)); 
+	localStorage.setItem(localStorageKey, JSON.stringify(historyOperations)); 
 }
 
 function historyItemDelete() {
